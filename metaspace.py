@@ -22,7 +22,7 @@ class NamespaceMeta(type):
         if attrs.get('__metaclass__') is NamespaceMeta:
             return type.__new__(mcls, name, bases, attrs)
         module = types.ModuleType(name)
-        if attrs['__module__'] == '!__main__':
+        if attrs['__module__'] == '__main__':
             attrs.pop('__module__')
             module.__dict__.update(attrs)
             sys.modules[name] = module
